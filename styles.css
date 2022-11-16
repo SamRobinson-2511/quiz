@@ -2,4 +2,21 @@
     display: flex;
 }
 
+#questionCard{
+    padding:20px;
+}
 
+#correct{
+    margin:5px;
+}
+#wrong{
+    margin:5px;
+}
+
+.correctChosen{
+    background-color: green;
+}
+
+.incorrectChosen{
+    background-color: red;
+}
