@@ -1,11 +1,12 @@
 const mainCard = document.querySelector("#main-card")
 const fetchAPIurl = 'https://the-trivia-api.com/api/questions'
-const questionH2 = document.querySelector("#question")
+const questionText = document.querySelector("#question")
+
 
 
 
 //buttons 
-let buttonWrong = 
+
 
 
 function handleFetch() {
@@ -40,20 +41,14 @@ function renderCards(cards){
 
          //questions: h2 on card
          let questions = (cards[i]["question"])
-         questionH2.textContent = questions
+         questionText.textContent = questions
 
         //answers: correct answers onto buttons 
         let correctAnswers = (cards[i]["correctAnswer"])
         let buttonCorrect = document.createElement('buttons')
         buttonCorrect.id = 'correct'
-        buttonCorrect.classList.add('btn correct_chosen')
+        buttonCorrect.classList.add('btn', 'correct-chosen', 's-btn')
         buttonCorrect.textContent = correctAnswers
-        
-        buttonCorrect.addEventListener ('submit', ()=>{
-
-        })
-        
-        
         
         // Incorrect answers
         let incorrectAnswers = (cards[i]["incorrectAnswers"])
@@ -66,10 +61,16 @@ function renderCards(cards){
             buttonWrong.textContent = incorrectAnswer
             // mainCard.append(buttonWrong)
 
-            buttonWrong.addEventListener('submit', ()=> {})
+            buttonWrong.addEventListener('submit', ()=> {
+                switch()
+                
+
+
+            })
 
             //next button to increment cards
             
+
         }
     }
 }
