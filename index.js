@@ -1,59 +1,93 @@
+const mainCard = document.querySelector("#main-card")
 const fetchAPIurl = 'https://the-trivia-api.com/api/questions'
+const questionText = document.querySelector("#question")
 
 
+
+
+//buttons 
+
+
+
+function handleFetch() {
 fetch(fetchAPIurl)
 .then(r=>r.json())
 .then(cards => renderCards(cards))
+}
 
-const catContainer = document.querySelector("body > div")
-const ansContainer = document.querySelector("body > div:nth-child(2)")
-const cardQuestion = document.querySelector("body > div:nth-child(3)")
+handleFetch()
+
+
+
+// const catContainer = document.querySelector("body > div")
+// const ansContainer = document.querySelector("body > div:nth-child(2)")
+// const cardQuestion = document.querySelector("body > div:nth-child(3)")
 
 function renderCards(cards){
-    for(i=0;i<cards.length;i++){
+    // console.log(cards)
+    for(let i=0;i<cards.length;i++){
         
-        //categories: into a dropdown 
-        let categories = (cards[i]["category"])
-        let catAnchors = document.createElement('a')
-        catAnchors.textContent = categories
-        catContainer.append(catAnchors)
+        
+        //create header for difficulty 
+        let difficulty = (cards[i]["difficulty"])
+        let difficultyLi = document.createElement('li')
+        
+
+        //create filter for categories
+        // let categories = (cards[i]["category"])
+        // let catAnchors = document.createElement('a')
+        // catAnchors.textContent = categories
+        // catContainer.append(catAnchors)
+
+         //questions: h2 on card
+         let questions = (cards[i]["question"])
+         questionText.textContent = questions
 
         //answers: correct answers onto buttons 
         let correctAnswers = (cards[i]["correctAnswer"])
-        let buttonCorrect = document.createElement('button')
+        let buttonCorrect = document.createElement('buttons')
         buttonCorrect.id = 'correct'
-        buttonCorrect.classList.add('button')
+        buttonCorrect.classList.add('btn', 'correct-chosen', 's-btn')
         buttonCorrect.textContent = correctAnswers
-        ansContainer.append(buttonCorrect)
         
-        //questions: h2 on card
-        let questions = (cards[i]["question"])
-        let questionH2 = document.createElement('h2')
-        cardQuestion.append(questions)
-        
-        //difficulty 
-        let difficulty = (cards[i]["difficulty"])
-        let difficultyLi = document.createElement('li')
-        console.log(difficulty)
+        // Incorrect answers
+        let incorrectAnswers = (cards[i]["incorrectAnswers"])
+        for(let j=0;j<incorrectAnswers.length;j++){
+            let incorrectAnswer = incorrectAnswers[j] 
+            // console.log(incorrectAnswer)
+            
+            buttonWrong.id = 'wrong'
+            buttonWrong.classList.add('btn', 'incorrectChosen')
+            buttonWrong.textContent = incorrectAnswer
+            // mainCard.append(buttonWrong)
 
-        // console.log(cards[i]["question"])
-//wrong answers only!
-        // for(j=0; j<incorrectAnswers.length; j++){
-        //     let incorrectAnswers = (cards[i]["incorrectAnswers"][j])
-        //     console.log(incorrectAnswers)
-        // }
+            buttonWrong.addEventListener('submit', ()=> {
+                switch()
+                
+
+
+            })
+
+            //next button to increment cards
+            
+
+        }
     }
 }
 
-// const testBtnDiv = document.createElement('div')
 
 
-// const testBtn = document.createElement('button')
-// button.addEventListener('click', (e)=>{
-//     if(e>3){
-//         alert(`Phone a friend: `)
-    
-// })
 
+
+// next button to increment cards
+
+
+
+
+
+// const btn1 = document.querySelector("#btn1")
+// const btn2 = document.querySelector("#btn2")
+// const btn3 = document.querySelector("#btn3")
+// const btn4 = document.querySelector("#btn4")
 
 
