@@ -1,84 +1,92 @@
+const mainCard = document.querySelector("#main-card")
 const fetchAPIurl = 'https://the-trivia-api.com/api/questions'
+const questionH2 = document.querySelector("#question")
 
 
+
+//buttons 
+let buttonWrong = 
+
+
+function handleFetch() {
 fetch(fetchAPIurl)
 .then(r=>r.json())
 .then(cards => renderCards(cards))
+}
 
-const catContainer = document.querySelector("body > div")
-const ansContainer = document.querySelector("body > div:nth-child(2)")
-const cardQuestion = document.querySelector("body > div:nth-child(3)")
+handleFetch()
+
+
+
+// const catContainer = document.querySelector("body > div")
+// const ansContainer = document.querySelector("body > div:nth-child(2)")
+// const cardQuestion = document.querySelector("body > div:nth-child(3)")
 
 function renderCards(cards){
-    console.log(cards)
-    for(i=0;i<cards.length;i++){
-        let div = document.createElement("div")
-        div.id = 'questionCard'
+    // console.log(cards)
+    for(let i=0;i<cards.length;i++){
+        
+        
+        //create header for difficulty 
+        let difficulty = (cards[i]["difficulty"])
+        let difficultyLi = document.createElement('li')
+        
 
-        
-        
-        //categories: into a dropdown 
-        let categories = (cards[i]["category"])
-        let catAnchors = document.createElement('a')
-        catAnchors.textContent = categories
-        catContainer.append(catAnchors)
+        //create filter for categories
+        // let categories = (cards[i]["category"])
+        // let catAnchors = document.createElement('a')
+        // catAnchors.textContent = categories
+        // catContainer.append(catAnchors)
 
          //questions: h2 on card
          let questions = (cards[i]["question"])
-         let questionH2 = document.createElement('h2')
-         div.append(questions)
+         questionH2.textContent = questions
 
         //answers: correct answers onto buttons 
         let correctAnswers = (cards[i]["correctAnswer"])
-        let buttonCorrect = document.createElement('button')
+        let buttonCorrect = document.createElement('buttons')
         buttonCorrect.id = 'correct'
-        buttonCorrect.classList.add('button')
+        buttonCorrect.classList.add('btn correct_chosen')
         buttonCorrect.textContent = correctAnswers
-        div.append(buttonCorrect)
         
-        buttonCorrect.addEventListener ('click', function() {
-            buttonCorrect.classList.add('correctChosen')
+        buttonCorrect.addEventListener ('submit', ()=>{
+
         })
         
-        //difficulty 
-        let difficulty = (cards[i]["difficulty"])
-        let difficultyLi = document.createElement('li')
-        console.log(difficulty)
+        
         
         // Incorrect answers
         let incorrectAnswers = (cards[i]["incorrectAnswers"])
-        for(j=0;j<incorrectAnswers.length;j++){
+        for(let j=0;j<incorrectAnswers.length;j++){
             let incorrectAnswer = incorrectAnswers[j] 
-            console.log(incorrectAnswer)
-            let buttonWrong = document.createElement('button')
+            // console.log(incorrectAnswer)
+            
             buttonWrong.id = 'wrong'
-            buttonWrong.classList.add('button')
+            buttonWrong.classList.add('btn', 'incorrectChosen')
             buttonWrong.textContent = incorrectAnswer
-            div.append(buttonWrong)
+            // mainCard.append(buttonWrong)
 
-            buttonWrong.addEventListener('click', function() {
-                buttonWrong.classList.add('incorrectChosen')
-            })
+            buttonWrong.addEventListener('submit', ()=> {})
+
+            //next button to increment cards
+            
         }
-        console.log(incorrectAnswers.length)
-        catContainer.append(div)
     }
-  
 }
 
 
 
 
-// const testBtnDiv = document.createElement('div')
 
-
-// const testBtn = document.createElement('button')
-// button.addEventListener('click', (e)=>{
-//     if(e>3){
-//         alert(`Phone a friend: `)
-    
-// })
+// next button to increment cards
 
 
 
-//should we add a timer for the button to return to the previous color?
+
+
+// const btn1 = document.querySelector("#btn1")
+// const btn2 = document.querySelector("#btn2")
+// const btn3 = document.querySelector("#btn3")
+// const btn4 = document.querySelector("#btn4")
+
+

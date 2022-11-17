@@ -1,6 +1,24 @@
+*, *::before, *after {
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-color:rgb(82, 186, 179);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+
+
 .container{
     display: flex;
 }
+
 
 #questionCard{
     padding:20px;
@@ -8,15 +26,54 @@
 
 #correct{
     margin:5px;
+
 }
 #wrong{
     margin:5px;
+
 }
 
-.correctChosen{
-    background-color: green;
+
+
+
+.btn{
+  background-color: hsl(155, 30%, 80%);
+  border-radius: 122px;
+  color: rgb(158, 101, 101);
+  cursor: pointer;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 4s;
+  width: 100%;
+  box-sizing: 1rem;
+  border: 2;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.incorrectChosen{
-    background-color: red;
+.btn:not(:disabled):hover,
+.btn:not(:disabled):focus {
+  outline: 100;
+  background: #f4e663;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+
+.btn:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(7);
+  cursor: not-allowed;
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px;
+
 }
